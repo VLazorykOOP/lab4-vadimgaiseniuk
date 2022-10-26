@@ -1,60 +1,97 @@
-﻿// See https://aka.ms/new-console-template for more information
-/// <summary>
-///  Top-level statements 
-///  Код програми (оператори)  вищого рівня
-/// </summary>
-///
-Console.WriteLine("Lab4 C# ");
-AnyFunc();
+﻿namespace Lab4CSharp;
 
-/// <summary>
-/// 
-///  Top-level statements must precede namespace and type declarations.
-/// At the top-level methods/functions can be defined and used
-/// На верхньому рівні можна визначати та використовувати методи/функції
-/// </summary>
-void AnyFunc()
+public class Program
 {
-    Console.WriteLine(" Some function in top-level");
-}
-Console.WriteLine("Problems 1 ");
-AnyFunc();
-//  приклад класів
-UserClass cl = new UserClass();
-cl.Name = " UserClass top-level ";
-User.UserClass cl2 = new User.UserClass();
-cl2.Name = " UserClass namespace User ";
-Lab4CSharp.UserClass cl3 = new Lab4CSharp.UserClass();
-cl3.Name = " UserClass namespace Lab4CSharp ";
-Console.WriteLine(cl + "   " + cl2 + "  " +cl3);
-
-
-
-/// <summary>
-/// 
-/// Top-level statements must precede namespace and type declarations.
-/// Оператори верхнього рівня мають передувати оголошенням простору імен і типу.
-/// Створення класу(ів) або оголошенням простору імен є закіченням  іструкцій верхнього рівня
-/// 
-/// </summary>
-
-namespace User
-{
-    class UserClass
+    public static void Main()
     {
-        public string Name { get; set; }
-        UserClass()
-        {
-            Name = "NoName";
-        }
-        UserClass(string n)
-        {
-            Name = n;
-        }
-    }
+        // Task 1
+        Console.WriteLine("Task 1");
+        
+        Triangle triangle = new Triangle(7, 10, 6, 100);
 
-}
-class UserClass
-{
-    public string Name { get; set; }
+        int a = triangle[0];
+        Console.WriteLine(a);
+        
+        triangle.PrintTriangleSideValues();
+        Console.WriteLine(triangle.CalculatePerimeter());
+        Console.WriteLine(triangle.CalculateSquare());
+
+        triangle = ++triangle;
+        triangle *= a;
+        
+        triangle.PrintTriangleSideValues();
+        Console.WriteLine(triangle.CalculatePerimeter());
+        Console.WriteLine(triangle.CalculateSquare());
+
+        if (triangle)
+            Console.WriteLine("Triangle can exist");
+        else 
+            Console.WriteLine("Triangle cannot exist");
+
+        Console.WriteLine("Task 2");
+        
+        // Task 2
+
+        VectorUInt vectorOne = new VectorUInt(6, 34);
+        VectorUInt vectorTwo = new VectorUInt(6);
+        
+        vectorTwo.InputVectorElements();
+        vectorOne.PrintVectorElements();
+        vectorTwo.PrintVectorElements();
+        
+        vectorOne.SetVectorElement(4, vectorTwo[0]);
+
+        vectorOne += vectorTwo;
+        vectorOne.PrintVectorElements();
+
+        vectorTwo *= vectorOne;
+        vectorTwo.PrintVectorElements();
+
+        VectorUInt vectorThree = new VectorUInt(6);
+
+        vectorThree = (vectorOne * vectorTwo) / (vectorOne - vectorThree);
+        vectorThree.PrintVectorElements();
+
+        vectorThree = vectorOne | vectorTwo;
+        vectorThree.PrintVectorElements();
+
+        vectorThree = vectorOne & vectorTwo;
+        vectorThree.PrintVectorElements();
+
+        Console.WriteLine($"vectorOne > vectorThree: {vectorOne > vectorThree}");
+        Console.WriteLine($"vectorTwo < vectorThree: {vectorTwo < vectorThree}");
+        
+        Console.WriteLine($"Amount of vectors: {vectorOne.VecAmount}");
+
+        // Task 3
+        
+        Console.WriteLine("Task 3");
+
+        MatrixUInt matrixOne = new MatrixUInt(3, 3, 4);
+        MatrixUInt matrixTwo = new MatrixUInt(3, 3);
+        
+        matrixTwo.InputMatrixElements();
+        
+        matrixOne.PrintMatrixElements();
+        matrixTwo.PrintMatrixElements();
+
+        matrixOne.SetMatrixElements(matrixTwo[2, 1]);
+
+        matrixOne *= matrixTwo;
+        
+        matrixOne.PrintMatrixElements();
+
+        MatrixUInt matrixThree = (matrixOne + matrixTwo) * (matrixOne / 2);
+        
+        matrixThree.PrintMatrixElements();
+
+        matrixThree = (matrixOne & matrixTwo) | matrixThree;
+        
+        matrixThree.PrintMatrixElements();
+        
+        Console.WriteLine($"matrixThree == matrixTwo: {matrixThree == matrixTwo}");
+        Console.WriteLine($"matrixOne >= matrixTwo: {matrixOne >= matrixTwo}");
+
+        Console.WriteLine($"The amount of matrices: {matrixOne.MatrixAmount}");
+    }
 }

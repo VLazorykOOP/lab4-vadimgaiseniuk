@@ -50,7 +50,7 @@ public class Triangle
 
     public static Triangle operator ++(Triangle t)
     {
-        var temp = new Triangle(++t._sideA, ++t._sideB, ++t._sideC);
+        var temp = new Triangle(++t._sideA, ++t._sideB, ++t._sideC, t.Color);
         return temp;
     }
 
@@ -80,7 +80,7 @@ public class Triangle
 
     public static Triangle operator *(Triangle t, int a)
     {
-        var temp = new Triangle(t._sideA * a, t._sideB * a, t._sideC * a);
+        var temp = new Triangle(t._sideA * a, t._sideB * a, t._sideC * a, t.Color);
         return temp;
     }
 
