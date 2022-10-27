@@ -87,11 +87,6 @@ public class Triangle
     public Triangle(int a, int b, int c) => (_sideA, _sideB, _sideC) = (a, b, c);
     public Triangle(int a, int b, int c, int color) => (_sideA, _sideB, _sideC, Color) = (a, b, c, color);
 
-    public void PrintTriangleSideValues()
-    {
-        Console.WriteLine($"\nSide A: {SideA};\n Side B: {SideB};\n Side C: {SideC};\n Color: {Color}\n");
-    }
-
     public int CalculatePerimeter()
     {
         return SideA + SideB + SideC;
@@ -102,5 +97,10 @@ public class Triangle
         var p = CalculatePerimeter() / 2;
         var square = Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
         return square;
+    }
+
+    public override string ToString()
+    {
+        return $"Side A: {SideA};\n Side B: {SideB};\n Side C {SideC};\n Color: {Color}\n";
     }
 }

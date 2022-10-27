@@ -11,15 +11,15 @@ public class Program
 
         int a = triangle[0];
         Console.WriteLine(a);
-        
-        triangle.PrintTriangleSideValues();
+
+        Console.WriteLine(triangle);
         Console.WriteLine(triangle.CalculatePerimeter());
         Console.WriteLine(triangle.CalculateSquare());
 
         triangle = ++triangle;
         triangle *= a;
-        
-        triangle.PrintTriangleSideValues();
+
+        Console.WriteLine(triangle);
         Console.WriteLine(triangle.CalculatePerimeter());
         Console.WriteLine(triangle.CalculateSquare());
 
